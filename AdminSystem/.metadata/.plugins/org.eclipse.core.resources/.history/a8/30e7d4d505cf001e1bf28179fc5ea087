@@ -1,0 +1,50 @@
+package com.adminSystem.controller;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import jakarta.servlet.http.HttpServletResponse;
+
+@Controller
+public class PdfController {
+
+	@Autowired
+	private YourDataService yourDataService;
+
+	@RequestMapping("/generatePdf/{id}")
+	public void generatePdf(@PathVariable("id") Long id, HttpServletResponse response)
+			throws IOException, DocumentException {
+		YourData record = yourDataService.findById(id);
+
+		Document document = new Document();
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		PdfWriter.getInstance(document, baos);
+		document.open();
+
+		document.add(new Paragraph("ID: " + record.getId()));
+		document.add(new Paragraph("Accounts: " + record.getAccounts()));
+		document.add(new Paragraph("Customer Name: " + record.getCustomerName()));
+		document.add(new Paragraph("OTS Amount: " + record.getOtsAmount()));
+		document.add(new Paragraph("Sanction Date: " + record.getSanctionDate()));
+		document.add(new Paragraph("Expiry Date: " + record.getExpiryDate()));
+		document.add(new Paragraph("Updated By: " + record.getUpdatedBy()));
+		document.add(new Paragraph("Creation Time: " + record.getCreationTime()));
+
+		document.close();
+
+		response.setContentType("application/pdf");
+		response.setHeader("Content-Disposition", "attachment; filename=\"record_" + id + ".pdf\"");
+
+		response.getOutputStream().write(baos.toByteArray());
+	}
+}

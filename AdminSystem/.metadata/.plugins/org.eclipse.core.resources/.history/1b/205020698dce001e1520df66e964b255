@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Edit Entry</title>
+</head>
+
+<body>
+	<h1>Edit Entry</h1>
+	<!-- Edit entry form -->
+	<form th:action="@{'/ots/update/' + ${entryId}}" method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+		<label for="accounts">Accounts:</label>
+		<input type="text" id="accounts" name="accounts" th:value="${accounts}"><br><br>
+
+		<label for="customerName">Customer Name:</label>
+		<input type="text" id="customerName" name="customerName" th:value="${customerName}"><br><br>
+
+		<!--<label for="otsAmount">OTS Amount:</label>
+		<input type="text" id="otsAmount" name="otsAmount" th:value="${otsAmount}"><br><br>
+
+		<label for="sanctionDate">Sanction Date:</label>
+		<input type="date" id="sanctionDate" name="sanctionDate" th:value="${sanctionDate}"><br><br>
+
+		<label for="expiryDate">Expiry Date:</label>
+		<input type="date" id="expiryDate" name="expiryDate" th:value="${expiryDate}"><br><br>
+
+		<label for="updatedBy">Updated By:</label>
+		<input type="text" id="updatedBy" name="updatedBy" th:value="${updatedBy}"><br><br>
+
+		<label for="creationTime">Creation Time:</label>
+		<input type="datetime-local" id="creationTime" name="creationTime" th:value="${creationTime}"><br><br>
+-->
+		<input type="submit" value="Update">
+	</form>
+</body>
+
+</html>

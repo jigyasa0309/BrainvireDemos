@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Dashboard</title>
+</head>
+
+<body>
+	<h1>Dashboard</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Accounts</th>
+				<th>Customer Name</th>
+				<th>OTS Amount</th>
+				<th>Sanction Date</th>
+				<th>Expiry Date</th>
+				<th>Updated By</th>
+				<th>Creation Time</th>
+				<th>Actions</th> <!-- Added column for actions -->
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="entry : ${entries}">
+				<td th:text="${entry.id}"></td>
+				<td th:text="${entry.accounts}"></td>
+				<td th:text="${entry.customerName}"></td>
+				<td th:text="${entry.otsAmount}"></td>
+				<td th:text="${entry.sanctionDate}"></td>
+				<td th:text="${entry.expiryDate}"></td>
+				<td th:text="${entry.updatedBy}"></td>
+				<td th:text="${entry.creationTime}"></td>
+				<td>
+					<button onclick="editEntry(${entry.id})">Edit</button>
+					<button onclick="deleteEntry(this.getAttribute('data-entry-id'))"
+						th:attr="data-entry-id=${entry.id}">Delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!-- Button for adding a new entry -->
+	<button onclick="addEntry()">Add New Entry</button>
+
+	<script>
+		// JavaScript functions for handling button clicks
+		function addEntry() {
+			// Implement logic to redirect to the add entry page or display a modal
+			console.log("Add new entry clicked");
+		}
+
+		function editEntry(id) {
+			// Implement logic to redirect to the edit entry page or display a modal
+			console.log("Edit entry clicked for id: " + id);
+		}
+
+		function deleteEntry(id) {
+			// Implement logic to delete the entry with the given id
+			console.log("Delete entry clicked for id: " + id);
+		}
+	</script>
+</body>
+
+</html>

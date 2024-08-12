@@ -1,0 +1,51 @@
+package com.adminSystem.entity;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Max;
+
+import org.antlr.v4.runtime.misc.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@AllArgsConstructor
+@Getter
+@Setter
+@Data
+public class OTSEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String accounts;
+    private String customerName;
+    private BigDecimal otsAmount;
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull
+    private LocalDate sanctionDate;
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull
+    @Future(message = "Expiry date must be in the future")
+    @Max(value = 90, message = "Expiry date cannot be more than 90 days from now")
+    private LocalDate expiryDate;
+
+    private String updatedBy;
+    private LocalDateTime creationTime;
+
+    public OTSEntity() {
+        this.sanctionDate = LocalDate.now(); 
+    }
+}

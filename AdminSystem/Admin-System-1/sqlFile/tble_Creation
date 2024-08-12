@@ -1,0 +1,11 @@
+CREATE TABLE `otsentity` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `accounts` varchar(255) DEFAULT NULL,
+  `creation_time` datetime(6) DEFAULT NULL,
+  `customer_name` varchar(255) DEFAULT NULL,
+  `expiry_date` date DEFAULT NULL,
+  `ots_amount` decimal(38,2) DEFAULT NULL,
+  `sanction_date` date DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- Configure Address bean -->
+    <bean class="com.springcore.auto.wire.annotation.Address" name="address">
+        <property name="street">
+            <value>Sanghi Street Mhow</value>
+        </property>
+        <property name="city">
+            <value>Indore</value>
+        </property>
+    </bean>
+
+    <!-- Configure Employee bean with byName autowiring -->
+    <bean class="com.springcore.auto.wire.annotation.Employee" name="employeeByName" autowire="byName" />
+
+    <!-- Configure Employee bean with byType autowiring -->
+    <bean class="com.springcore.auto.wire.annotation.Employee" name="employeeByType" autowire="byType" />
+
+    <!-- Configure Employee bean with constructor-based autowiring -->
+    <bean class="com.springcore.auto.wire.annotation.Employee" name="employeeConstructor" autowire="constructor" />
+</beans>

@@ -1,0 +1,50 @@
+package com.adminSystem.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.adminSystem.entity.OTSEntity;
+import com.adminSystem.repository.OTSRepository;
+
+@Service
+public class OTSService {
+	@Autowired
+	private OTSRepository otsRepository;
+
+	public List<OTSEntity> getAllEntries() {
+		return otsRepository.findAll();
+	}
+
+	public OTSEntity addEntry(OTSEntity entity) {
+		return otsRepository.save(entity);
+	}
+
+	public Optional<OTSEntity> getEntryById(Long id) {
+		return otsRepository.findById(id);
+	}
+
+	public OTSEntity updateEntry(Long id, OTSEntity updatedEntity) {
+		Optional<OTSEntity> optionalEntity = otsRepository.findById(id);
+		if (optionalEntity.isPresent()) {
+			OTSEntity existingEntity = optionalEntity.get();
+			// Update fields as needed
+			existingEntity.setAccounts(updatedEntity.getAccounts());
+			existingEntity.setCustomerName(updatedEntity.getCustomerName());
+			existingEntity.setOtsAmount(updatedEntity.getOtsAmount());
+			existingEntity.setSanctionDate(updatedEntity.getSanctionDate());
+			existingEntity.setExpiryDate(updatedEntity.getExpiryDate());
+			existingEntity.setUpdatedBy(updatedEntity.getUpdatedBy());
+			// Save the updated entity
+			return otsRepository.save(existingEntity);
+		} else {
+			throw new RuntimeException("Entry not found with id: " + id);
+		}
+	}
+
+	public void deleteEntry(Long id) {
+		otsRepository.deleteById(id);
+	}
+}

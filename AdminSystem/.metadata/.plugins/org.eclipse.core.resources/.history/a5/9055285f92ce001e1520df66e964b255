@@ -1,0 +1,76 @@
+package com.adminSystem.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.adminSystem.entity.OTSEntity;
+import com.adminSystem.service.OTSService;
+
+@Controller
+
+public class DashboardController {
+	@Autowired
+	private OTSService otsService;
+
+	@GetMapping("/dashboard")
+	public String showDashboard(Model model) {
+		List<OTSEntity> entries = otsService.getAllEntries();
+		model.addAttribute("entries", entries);
+		return "dashboard";
+	}
+
+	 @GetMapping("/edit/{id}")
+	    public String showEditForm(@PathVariable("id") Long id, Model model) {
+	        OTSEntity entry = otsService.getEntryById(id);
+	        model.addAttribute("entry", entry);
+	        return "edit-entry"; // Assuming your edit entry page is named edit-entry.html
+	    }
+	 
+	 @PostMapping("/ots/update/{id}")
+	    public String updateEntry(@PathVariable("id") Long id, @ModelAttribute OTSEntity updatedEntity) {
+	        otsService.updateOTSRecord(id, updatedEntity);
+	        return "redirect:/dashboard"; // Redirect to the dashboard after update
+	    } 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	@PostMapping("ots/add")
+	public ResponseEntity<OTSEntity> addOTSRecord(@RequestBody OTSEntity otsEntity) {
+		OTSEntity savedRecord = otsService.addOTSRecord(otsEntity);
+		return new ResponseEntity<>(savedRecord, HttpStatus.CREATED);
+	}
+
+//	@PostMapping("ots/update/{id}")
+//	public ResponseEntity<OTSEntity> updateOTSRecord(@PathVariable Long id, MultiValueMap<String, String> formData) {
+//		// Convert form data to OTSEntity object
+//		OTSEntity updatedEntity = new OTSEntity();
+//		updatedEntity.setAccounts(formData.getFirst("accounts"));
+//		updatedEntity.setCustomerName(formData.getFirst("customerName"));
+////        // Map other fields similarly
+////updatedEntity.setCreationTime(formData.get())
+//		// Call the updateOTSRecord method with the entity
+//		OTSEntity updatedRecord = otsService.updateOTSRecord(id, updatedEntity);
+//		return new ResponseEntity<>(updatedRecord, HttpStatus.OK);
+//	}
+
+	@PostMapping("ots/delete/{id}")
+	public ResponseEntity<Void> deleteOTSRecord(@PathVariable Long id) {
+		otsService.deleteOTSRecord(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+}

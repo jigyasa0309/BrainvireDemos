@@ -1,0 +1,5 @@
+package com.Demo.repository;
+
+public class SellerRepository {
+
+}

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="/home/jigyasa_yadav/Downloads/mapping"/>
+			<item value="/home/jigyasa_yadav/Downloads/firstwebapp"/>
+			<item value="/home/jigyasa_yadav/Spring-demo-workspace/learn-spring-framework"/>
+			<item value="/home/jigyasa_yadav/Spring-demo-workspace/learn-spring-boot"/>
+			<item value="/home/jigyasa_yadav/Downloads/learn-spring-boot"/>
+			<item value="/home/jigyasa_yadav/Documents/first-spring-boot"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="/home/jigyasa_yadav/Spring-demo-workspace/springjdbc"/>
+			<item value="/home/jigyasa_yadav/Spring-demo-workspace/springjdbc/src/main/java"/>
+			<item value="/home/jigyasa_yadav/Spring-demo-workspace/firstsoringcore"/>
+			<item value="/home/jigyasa_yadav/Documents/first-spring-boot"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="internal"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="com.spring.orm"/>
+			<item value="com.spring.springfirstproject"/>
+			<item value="com.spring.jdbc.springjdbc"/>
+			<item value="com.springcore.firstsoringcore"/>
+			<item value="com.springcore.firstspringcore"/>
+			<item value="com.springcore.springcoredemo"/>
+			<item value="com.springcore.springcorefirst"/>
+		</list>
+		<list key="groupId">
+			<item value="com.spring.orm"/>
+			<item value="com.spring"/>
+			<item value="com.spring.jdbc"/>
+			<item value="com.springcore"/>
+		</list>
+		<list key="artifactId">
+			<item value="springORM"/>
+			<item value="springfirstproject"/>
+			<item value="springjdbc"/>
+			<item value="firstsoringcore"/>
+			<item value="firstspringcore"/>
+			<item value="springcoredemo"/>
+			<item value="springcore"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>

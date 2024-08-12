@@ -1,0 +1,5 @@
+package com.adminSystem.service;
+
+public class PdfGenerationService {
+
+}
